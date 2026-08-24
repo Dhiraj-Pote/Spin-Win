@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: rakhi-spin-wheel
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"

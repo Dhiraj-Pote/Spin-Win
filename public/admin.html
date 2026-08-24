@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Results · Raksha Bandhan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <main class="dash" id="dash">
+    <header class="dash-head">
+      <div>
+        <h1>Raksha Bandhan · Live Results</h1>
+        <p class="dash-sub">Watching for spins in real time</p>
+      </div>
+      <div class="status" id="status"><span class="pip"></span> Connecting…</div>
+    </header>
+
+    <section class="stats" id="stats">
+      <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-label">Registered</span></div>
+      <div class="stat"><span class="stat-num" id="statSpun">0</span><span class="stat-label">Spun</span></div>
+      <div class="stat"><span class="stat-num" id="statMsgs">0</span><span class="stat-label">Messages</span></div>
+    </section>
+
+    <section class="feed" id="feed">
+      <p class="empty" id="emptyState">No one has joined yet. Share the link and watch the magic happen. ✨</p>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

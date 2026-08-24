@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff3e6" />
+  <title>Raksha Bandhan Spin &amp; Win</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- soft festive background layers -->
+  <div class="bg-wash"></div>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+  <canvas id="petals" class="petals-canvas" aria-hidden="true"></canvas>
+  <canvas id="fx" class="fx-canvas" aria-hidden="true"></canvas>
+
+  <main class="stage">
+
+    <!-- ============ SCREEN 1 : WELCOME / DETAILS ============ -->
+    <section class="screen is-active" id="screen-welcome">
+      <div class="screen-inner">
+        <div class="card">
+          <div class="rakhi-emblem" aria-hidden="true">
+            <span class="rakhi-thread"></span>
+            <span class="rakhi-flower">
+              <span class="petal"></span><span class="petal"></span>
+              <span class="petal"></span><span class="petal"></span>
+              <span class="petal"></span><span class="petal"></span>
+              <span class="rakhi-center"></span>
+            </span>
+            <span class="rakhi-thread rakhi-thread--right"></span>
+          </div>
+
+          <p class="eyebrow">Happy Raksha Bandhan</p>
+          <h1 class="title">Spin <span class="title-amp">&amp;</span> Win</h1>
+          <p class="subtitle">A surprise gift, chosen by luck.</p>
+
+          <form class="form" id="detailsForm" autocomplete="off" novalidate>
+            <label class="field">
+              <span class="field-label">Your Name</span>
+              <input type="text" id="nameInput" name="name" placeholder="e.g. Priya" maxlength="60" required />
+            </label>
+            <label class="field">
+              <span class="field-label">Mobile Number</span>
+              <input type="tel" id="mobileInput" name="mobile" placeholder="10-digit number" inputmode="numeric" maxlength="10" required />
+            </label>
+            <label class="field">
+              <span class="field-label">Secret Code</span>
+              <input type="text" id="codeInput" name="secretCode" placeholder="Any word you'll remember" maxlength="40" required />
+              <span class="field-hint">Your brother needs this to give your gift.</span>
+            </label>
+            <p class="form-error" id="formError"></p>
+            <button type="submit" class="btn btn--primary" id="startBtn">
+              <span>Let's Begin</span>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 2 : THE WHEEL ============ -->
+    <section class="screen" id="screen-wheel">
+      <div class="screen-inner screen-inner--wheel">
+        <div class="mode-banner mode-banner--demo" id="modeBanner">
+          <span class="mode-badge" id="modeBadge">PRACTICE</span>
+          <span class="mode-text" id="modeText">2 free spins to try</span>
+        </div>
+
+        <header class="wheel-head">
+          <h2 class="wheel-title" id="wheelTitle">Practice Spin</h2>
+          <p class="wheel-hint" id="wheelHint">Flick the wheel to spin.</p>
+        </header>
+
+        <div class="wheel-wrap">
+          <div class="wheel-glow" aria-hidden="true"></div>
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <div class="wheel-stage">
+            <canvas id="wheel" width="720" height="720"></canvas>
+            <button class="wheel-hub" id="spinBtn" aria-label="Spin the wheel">
+              <span class="hub-inner" id="hubLabel">SPIN</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="wheel-foot">
+          <div class="dots" id="demoDots" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span>
+          </div>
+          <p class="foot-note" id="footNote">Practice spin 1 of 2</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 3 : RESULT ============ -->
+    <section class="screen" id="screen-result">
+      <div class="screen-inner">
+        <div class="card card--result">
+          <div class="burst" aria-hidden="true"></div>
+          <div class="ray-glow" aria-hidden="true"></div>
+          <p class="eyebrow" id="resultEyebrow">Congratulations!</p>
+          <div class="gift-badge" id="giftBadge">
+            <span class="gift-icon" aria-hidden="true">🎁</span>
+            <span class="gift-caption">Your Raksha Bandhan Gift</span>
+            <span class="gift-text" id="giftText">—</span>
+            <span class="gift-sparkle gift-sparkle--1" aria-hidden="true">✨</span>
+            <span class="gift-sparkle gift-sparkle--2" aria-hidden="true">🌟</span>
+          </div>
+          <p class="result-sub">It's all yours 💛</p>
+          <button class="btn btn--primary" id="toMessageBtn">
+            <span>Send a Thank-You</span>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 4 : THANK-YOU MESSAGE ============ -->
+    <section class="screen" id="screen-message">
+      <div class="screen-inner">
+        <div class="card">
+          <p class="eyebrow">One last thing</p>
+          <h2 class="title title--sm">A note for<br>your brother</h2>
+          <form class="form" id="messageForm">
+            <label class="field">
+              <textarea id="messageInput" rows="4" maxlength="1000" placeholder="Write your heartfelt message here..."></textarea>
+            </label>
+            <button type="submit" class="btn btn--primary" id="sendMsgBtn">
+              <span>Send with Love</span>
+              <span class="heart" aria-hidden="true">💛</span>
+            </button>
+            <button type="button" class="btn btn--ghost" id="skipMsgBtn">Skip for now</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREEN 5 : DONE ============ -->
+    <section class="screen" id="screen-done">
+      <div class="screen-inner">
+        <div class="card card--done">
+          <div class="rakhi-emblem rakhi-emblem--sm" aria-hidden="true">
+            <span class="rakhi-flower">
+              <span class="petal"></span><span class="petal"></span>
+              <span class="petal"></span><span class="petal"></span>
+              <span class="petal"></span><span class="petal"></span>
+              <span class="rakhi-center"></span>
+            </span>
+          </div>
+          <h2 class="title">From Dhiraj!</h2>
+          <p class="subtitle">Happy Raksha Bandhan ✨</p>
+          <p class="done-gift">Your gift: <strong id="doneGift">—</strong> is on your way!</p>
+
+          <div class="delivery-scene" aria-hidden="true">
+            <span class="delivery-road"></span>
+            <span class="rider">
+              <span class="rider-bob">
+                <svg viewBox="0 0 150 90" width="122" height="74">
+                  <g class="speed" stroke="#e0607f" stroke-width="3" stroke-linecap="round">
+                    <line x1="2" y1="34" x2="18" y2="34"/>
+                    <line x1="-4" y1="46" x2="14" y2="46"/>
+                    <line x1="4" y1="58" x2="16" y2="58"/>
+                  </g>
+                  <g class="wheel">
+                    <circle cx="30" cy="68" r="14" fill="#3a2a2a"/>
+                    <circle cx="30" cy="68" r="5.5" fill="#e9dcc6"/>
+                    <line x1="30" y1="56" x2="30" y2="80" stroke="#8a7a6a" stroke-width="2.4"/>
+                    <line x1="18" y1="68" x2="42" y2="68" stroke="#8a7a6a" stroke-width="2.4"/>
+                  </g>
+                  <g class="wheel">
+                    <circle cx="114" cy="68" r="14" fill="#3a2a2a"/>
+                    <circle cx="114" cy="68" r="5.5" fill="#e9dcc6"/>
+                    <line x1="114" y1="56" x2="114" y2="80" stroke="#8a7a6a" stroke-width="2.4"/>
+                    <line x1="102" y1="68" x2="126" y2="68" stroke="#8a7a6a" stroke-width="2.4"/>
+                  </g>
+                  <path d="M30 62 L56 62 L62 52 L100 52 L114 62" fill="none" stroke="#ef8354" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M100 52 L106 32" stroke="#d99a34" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M98 31 L112 29" stroke="#d99a34" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M42 49 L60 49" stroke="#5b2b26" stroke-width="7" stroke-linecap="round"/>
+                  <rect x="18" y="30" width="26" height="24" rx="3" fill="#f6b93b" stroke="#c07d1e" stroke-width="2.5"/>
+                  <path d="M31 30 V54 M18 42 H44" stroke="#c07d1e" stroke-width="2"/>
+                  <path d="M27 38 h8 v-4 h-8 z" fill="#c07d1e"/>
+                  <path d="M54 50 L66 62" stroke="#7a3b2e" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M54 50 L76 36" stroke="#e0607f" stroke-width="9" stroke-linecap="round"/>
+                  <path d="M74 38 L104 31" stroke="#e0607f" stroke-width="6" stroke-linecap="round"/>
+                  <circle cx="82" cy="26" r="10" fill="#f2c7a0"/>
+                  <path d="M72 26 a10 10 0 0 1 20 0 Z" fill="#5b2b26"/>
+                  <rect x="90" y="24" width="6" height="5" rx="2" fill="#9ad0e0"/>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ DEMO INTRO MODAL ============ -->
+  <div class="modal" id="demoModal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-icon" aria-hidden="true">🎡</div>
+      <p class="modal-eyebrow">Just for Demo</p>
+      <h3 class="modal-title">2 Practice Spins</h3>
+      <p class="modal-text">These first two spins are just a <strong>trial run</strong> .</p>
+      <button class="btn btn--primary btn--big" id="demoReadyBtn">
+        <span>Got it — Let's Practice!</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ FINAL-SPIN MODAL ============ -->
+  <div class="modal" id="finalModal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-icon" aria-hidden="true">🎁</div>
+      <p class="modal-eyebrow">Ready?</p>
+      <h3 class="modal-title">Your <span>Final</span> Spin</h3>
+      <p class="modal-text">One real try. Whatever it lands on is yours!</p>
+      <button class="btn btn--primary btn--big" id="readyBtn">
+        <span>I'm Ready!</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tap-shield" id="tapShield" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
