@@ -139,11 +139,11 @@
     ctx.shadowBlur = 2;
 
     const lines = wrapText(text, 15);
-    const fontSize = lines.length > 2 ? 27 : 31;
+    const fontSize = lines.length > 2 ? 31 : 36;
     ctx.font = `600 ${fontSize}px 'Poppins', sans-serif`;
     const lineH = fontSize + 4;
     const startY = -((lines.length - 1) * lineH) / 2;
-    const x = RADIUS - 28;
+    const x = RADIUS - 24;
     lines.forEach((ln, i) => ctx.fillText(ln, x, startY + i * lineH));
     ctx.restore();
   }
