@@ -243,20 +243,20 @@ body {
 }
 .mode-banner--final .mode-badge { background: var(--rose); animation: badgeGlow 1.4s ease-in-out infinite; }
 @keyframes badgeGlow { 50% { box-shadow: 0 0 0 6px rgba(224,96,127,0.2); } }
-.mode-text { font-size: .96rem; color: var(--ink); }
+.mode-text { font-size: 1.06rem; color: var(--ink); }
 
 .wheel-head { text-align: center; }
 .wheel-title {
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(1.8rem, 6.5vw, 2.5rem); color: var(--ink); line-height: 1.05;
+  font-size: clamp(2.1rem, 7.5vw, 2.9rem); color: var(--ink); line-height: 1.05;
 }
 .wheel-hint {
-  font-size: clamp(.95rem, 3.2vw, 1.08rem); color: var(--ink-soft);
-  max-width: 30ch; margin: 10px auto 0; font-weight: 400;
+  font-size: clamp(1.05rem, 3.8vw, 1.22rem); color: var(--ink-soft);
+  max-width: 30ch; margin: 12px auto 0; font-weight: 400;
 }
 
 .wheel-wrap {
-  position: relative; width: min(84vw, 400px); aspect-ratio: 1;
+  position: relative; width: min(93vw, 480px); aspect-ratio: 1;
   margin: 0 auto; display: grid; place-items: center; touch-action: none;
 }
 .wheel-glow {
@@ -314,7 +314,7 @@ body {
 }
 .dot.done { background: var(--gold); transform: scale(1.15); }
 .dot.active { background: var(--coral); box-shadow: 0 0 10px rgba(239,131,84,.6); }
-.foot-note { font-size: 1.02rem; color: var(--ink-soft); font-weight: 500; }
+.foot-note { font-size: 1.12rem; color: var(--ink-soft); font-weight: 500; }
 
 /* ================= RESULT SCREEN ================= */
 .card--result { padding-top: 44px; position: relative; overflow: hidden; }
@@ -463,7 +463,7 @@ body {
 
 /* height adjustments for short screens */
 @media (max-height: 720px) {
-  .wheel-wrap { width: min(72vw, 340px); }
+  .wheel-wrap { width: min(84vw, 400px); }
   .card { padding: 32px 26px; }
   .subtitle { margin-bottom: 22px; }
   .rakhi-emblem { height: 62px; margin-bottom: 12px; }
