@@ -25,15 +25,17 @@ const PORT = process.env.PORT || 3000;
  *  GIFTS  —  order here must match the order drawn on the wheel.
  *  "weight" is the chance out of the total (these add up to 100).
  * ------------------------------------------------------------------ */
+// TRICK BRANCH: outcome is always ₹400 Cash (weight 100, all others 0).
 const GIFTS = [
-  { name: 'Designer Diary with Knob',                    weight: 10 },
-  { name: 'Mixed Dry Fruits Set with Wooden Container',  weight: 5  },
-  { name: 'Perfume Set',                                 weight: 5  },
-  { name: '\u20B9500 Cash',                              weight: 5  },
-  { name: 'Foxtail SPA 70+ Sunscreen',                   weight: 5  },
-  { name: 'Diary with Password Lock',                    weight: 20 },
-  { name: 'Mini Bluetooth Speaker',                      weight: 30 },
-  { name: 'Hair Dryer',                                  weight: 20 },
+  { name: 'Designer Diary with Knob',   weight: 0   },
+  { name: '\u20B91000 Cash',            weight: 0   },
+  { name: 'Perfume Set',                weight: 0   },
+  { name: '\u20B92000 Cash',            weight: 0   },
+  { name: 'Diary with Password Lock',   weight: 0   },
+  { name: '\u20B9400 Cash',             weight: 100 },
+  { name: 'Mini Bluetooth Speaker',     weight: 0   },
+  { name: '\u20B91500 Cash',            weight: 0   },
+  { name: 'Hair Dryer',                 weight: 0   },
 ];
 
 const TOTAL_WEIGHT = GIFTS.reduce((sum, g) => sum + g.weight, 0);
