@@ -29,7 +29,7 @@ const GIFTS = [
   { name: 'Designer Diary with Knob',                    weight: 10 },
   { name: 'Mixed Dry Fruits Set with Wooden Container',  weight: 5  },
   { name: 'Perfume Set',                                 weight: 5  },
-  { name: '\u20B9500 Cash',                              weight: 5  },
+  { name: '\u20B91000 Cash',                             weight: 5  },
   { name: 'Foxtail SPA 70+ Sunscreen',                   weight: 5  },
   { name: 'Diary with Password Lock',                    weight: 20 },
   { name: 'Mini Bluetooth Speaker',                      weight: 30 },
