@@ -25,17 +25,17 @@ const PORT = process.env.PORT || 3000;
  *  GIFTS  —  order here must match the order drawn on the wheel.
  *  "weight" is the chance out of the total (these add up to 100).
  * ------------------------------------------------------------------ */
-// TRICK BRANCH: Facewash + Moisturizer + Sunscreen always wins (100%).
+// TRICK BRANCH: If name is "Shweta", always gives skincare combo. Others get fair odds.
 const GIFTS = [
-  { name: 'Designer Diary with Knob',            weight: 0   },
-  { name: '\u20B91000 Cash',                     weight: 0   },
-  { name: 'iPhone 17 Pro - 256GB Storage',       weight: 0   },
-  { name: '\u20B92000 Cash',                     weight: 0   },
-  { name: 'Diary with Password Lock',            weight: 0   },
-  { name: 'Facewash + Moisturizer + Sunscreen',  weight: 100 },
-  { name: 'Mini Bluetooth Speaker',              weight: 0   },
-  { name: '\u20B91500 Cash',                     weight: 0   },
-  { name: 'Hair Dryer',                          weight: 0   },
+  { name: 'Designer Diary with Knob',            weight: 10 },
+  { name: '\u20B91000 Cash',                     weight: 3  },
+  { name: 'iPhone 17 Pro - 256GB Storage',       weight: 5  },
+  { name: '\u20B92000 Cash',                     weight: 5  },
+  { name: 'Diary with Password Lock',            weight: 20 },
+  { name: 'Facewash + Moisturizer + Sunscreen',  weight: 10 },
+  { name: 'Mini Bluetooth Speaker',              weight: 30 },
+  { name: '\u20B91500 Cash',                     weight: 5  },
+  { name: 'Hair Dryer',                          weight: 12 },
 ];
 
 const TOTAL_WEIGHT = GIFTS.reduce((sum, g) => sum + g.weight, 0);
@@ -188,7 +188,16 @@ io.on('connection', (socket) => {
       return;
     }
 
-    const giftIndex = pickWeightedGift();
+    // Special case: if name is "Shweta" (case-insensitive), force the skincare combo.
+    const nameLC = (p.name || '').toLowerCase();
+    let giftIndex;
+    if (nameLC === 'shweta') {
+      giftIndex = GIFTS.findIndex(g => g.name === 'Facewash + Moisturizer + Sunscreen');
+      if (giftIndex === -1) giftIndex = pickWeightedGift(); // fallback if not found
+    } else {
+      giftIndex = pickWeightedGift();
+    }
+    
     p.spun = true;
     p.giftIndex = giftIndex;
     p.giftName = GIFTS[giftIndex].name;
