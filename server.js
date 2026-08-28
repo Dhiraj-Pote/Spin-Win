@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 3000;
 const GIFTS = [
   { name: 'Designer Diary with Knob',            weight: 0   },
   { name: '\u20B91000 Cash',                     weight: 0   },
-  { name: 'Perfume Set',                         weight: 0   },
+  { name: 'iPhone 17 Pro - 256GB Storage',       weight: 0   },
   { name: '\u20B92000 Cash',                     weight: 0   },
   { name: 'Diary with Password Lock',            weight: 0   },
   { name: 'Facewash + Moisturizer + Sunscreen',  weight: 100 },
