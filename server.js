@@ -25,17 +25,17 @@ const PORT = process.env.PORT || 3000;
  *  GIFTS  —  order here must match the order drawn on the wheel.
  *  "weight" is the chance out of the total (these add up to 100).
  * ------------------------------------------------------------------ */
-// TRICK BRANCH: If name is "Shweta", always gives skincare combo. Others get fair odds.
+// ALL OPTIONS EQUAL CHANCE: Each option has exactly 11.11% chance (9 items = 100% total).
 const GIFTS = [
-  { name: 'Designer Diary with Knob',            weight: 10 },
-  { name: '\u20B91000 Cash',                     weight: 3  },
-  { name: 'iPhone 17 Pro - 256GB Storage',       weight: 5  },
-  { name: '\u20B92000 Cash',                     weight: 5  },
-  { name: 'Diary with Password Lock',            weight: 20 },
-  { name: 'Facewash + Moisturizer + Sunscreen',  weight: 10 },
-  { name: 'Mini Bluetooth Speaker',              weight: 30 },
-  { name: '\u20B91500 Cash',                     weight: 5  },
-  { name: 'Hair Dryer',                          weight: 12 },
+  { name: 'Designer Diary with Knob',            weight: 11.11 },
+  { name: '\u20B91000 Cash',                     weight: 11.11 },
+  { name: 'iPhone 17 Pro - 256GB Storage',       weight: 11.11 },
+  { name: '\u20B92000 Cash',                     weight: 11.11 },
+  { name: 'Diary with Password Lock',            weight: 11.11 },
+  { name: 'Facewash + Moisturizer + Sunscreen',  weight: 11.11 },
+  { name: 'Mini Bluetooth Speaker',              weight: 11.11 },
+  { name: '\u20B91500 Cash',                     weight: 11.11 },
+  { name: 'Hair Dryer',                          weight: 11.12 },
 ];
 
 const TOTAL_WEIGHT = GIFTS.reduce((sum, g) => sum + g.weight, 0);
@@ -188,16 +188,7 @@ io.on('connection', (socket) => {
       return;
     }
 
-    // Special case: if name is "Shweta" (case-insensitive), force the skincare combo.
-    const nameLC = (p.name || '').toLowerCase();
-    let giftIndex;
-    if (nameLC === 'shweta') {
-      giftIndex = GIFTS.findIndex(g => g.name === 'Facewash + Moisturizer + Sunscreen');
-      if (giftIndex === -1) giftIndex = pickWeightedGift(); // fallback if not found
-    } else {
-      giftIndex = pickWeightedGift();
-    }
-    
+    const giftIndex = pickWeightedGift();
     p.spun = true;
     p.giftIndex = giftIndex;
     p.giftName = GIFTS[giftIndex].name;
