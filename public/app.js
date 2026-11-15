@@ -573,10 +573,10 @@
     drawWheel();
   }).catch(() => {
     state.gifts = [
-      { name: 'Designer Diary with Knob' }, { name: 'Mixed Dry Fruits Set' },
-      { name: 'Perfume Set' }, { name: '\u20B9500 Cash' },
-      { name: 'Foxtail SPA 70+ Sunscreen' }, { name: 'Diary with Password Lock' },
-      { name: 'Mini Bluetooth Speaker' }, { name: 'Hair Dryer' },
+      { name: 'Helmet' }, { name: 'Premium Masala Box' },
+      { name: 'Perfume Set' }, { name: 'Pillow' },
+      { name: 'Foxtail SPA 70+ Sunscreen' }, { name: 'Goggle' },
+      { name: 'Mini Bluetooth Speaker' }, { name: 'Hydra Facial' },
     ];
     drawWheel();
   });
