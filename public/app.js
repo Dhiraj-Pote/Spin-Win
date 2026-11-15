@@ -574,8 +574,8 @@
   }).catch(() => {
     state.gifts = [
       { name: 'Helmet' }, { name: 'Premium Masala Box' },
-      { name: 'Perfume Set' }, { name: 'Pillow' },
-      { name: 'Foxtail SPA 70+ Sunscreen' }, { name: 'Goggle' },
+      { name: 'Perfume Set' }, { name: 'Membrane Pillow' },
+      { name: 'Sunscreen & Moisturizer' }, { name: 'Goggle' },
       { name: 'Mini Bluetooth Speaker' }, { name: 'Hydra Facial' },
     ];
     drawWheel();

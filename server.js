@@ -26,15 +26,14 @@ const PORT = process.env.PORT || 3000;
  *  "weight" is the chance out of the total (these add up to 100).
  * ------------------------------------------------------------------ */
 const GIFTS = [
-  { name: 'Designer Diary with Knob',                    weight: 10 },
-  { name: 'Mixed Dry Fruits Set with Wooden Container',  weight: 5  },
-  { name: 'Perfume Set',                                 weight: 5  },
-  { name: '\u20B91000 Cash',                             weight: 3  },
-  { name: '\u20B9400 Cash',                              weight: 2  },
-  { name: 'Foxtail SPA 70+ Sunscreen',                   weight: 5  },
-  { name: 'Diary with Password Lock',                    weight: 20 },
-  { name: 'Mini Bluetooth Speaker',                      weight: 30 },
-  { name: 'Hair Dryer',                                  weight: 20 },
+  { name: 'Helmet',                       weight: 10 },
+  { name: 'Premium Masala Box',           weight: 5  },
+  { name: 'Perfume Set',                  weight: 5  },
+  { name: 'Membrane Pillow',              weight: 5  },
+  { name: 'Sunscreen & Moisturizer',      weight: 5  },
+  { name: 'Goggle',                       weight: 20 },
+  { name: 'Mini Bluetooth Speaker',       weight: 30 },
+  { name: 'Hydra Facial',                 weight: 20 },
 ];
 
 const TOTAL_WEIGHT = GIFTS.reduce((sum, g) => sum + g.weight, 0);
